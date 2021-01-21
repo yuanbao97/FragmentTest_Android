@@ -11,6 +11,7 @@ import android.widget.Button;
 
 import com.example.fragmenttest.R;
 import com.example.fragmenttest.fragment.AnotherRightFragment;
+import com.example.fragmenttest.fragment.RightFragment;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         Button button = (Button) findViewById(R.id.button);
         button.setOnClickListener(this);
+        replaceFragment(new RightFragment());
     }
 
     @Override
@@ -36,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.right_layout, fragment);
+        transaction.add(R.id.right_layout, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
     }
